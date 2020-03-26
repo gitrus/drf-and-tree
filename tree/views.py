@@ -16,9 +16,10 @@ def tree_list(request):
 
         serializer = TreeSerializer(roots_trees, many=True)
 
-        # TODO: switch safe=True
-        # its dangerous to return array to browser, but task is task=(
-        return JsonResponse(serializer.data, safe=False)
+        return JsonResponse(
+            {"result": serializer.data},
+            safe=True,
+        )
 
     else:
         raise NotImplementedError()

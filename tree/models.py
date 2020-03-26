@@ -5,7 +5,10 @@ class Tree(models.Model):
     class Meta:
         db_table = 'tree'
 
+    tree_id = models.AutoField(primary_key=True)
+
     parent = models.ForeignKey(
+        db_column='parent_id',
         to='self',
         on_delete=models.CASCADE,
         null=True,
